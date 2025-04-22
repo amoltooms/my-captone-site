@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown to Change</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("him.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .title-button {
+      font-size: 3rem;
+      color: white;
+      background-color: rgba(255, 0, 0, 0.8);
+      padding: 20px 40px;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+
+    .title-button:hover {
+      background-color: rgba(255, 50, 50, 0.9);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="next.html" class="title-button">Countdown to Change</a>
+</body>
+</html>

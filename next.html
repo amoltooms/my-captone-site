@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown to 2028 Election</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: url("fire.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: #ff4444;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .countdown-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+    }
+
+    .time-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .time-box span.value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    .time-box span.label {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #aaa;
+    }
+
+    .back-button {
+      margin-top: 40px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown to the 2028 Presidential Election</h1>
+  <div class="countdown-container">
+    <div class="time-box">
+      <span class="value" id="days">0</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="time-box">
+      <span class="value" id="hours">0</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="time-box">
+      <span class="value" id="minutes">0</span>
+      <span class="label">Minutes</span>
+    </div>
+    <div class="time-box">
+      <span class="value" id="seconds">0</span>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+
+  <button onclick="goBack()" class="back-button">Back</button>
+
+  <script>
+    const electionDate = new Date('November 7, 2028 00:00:00').getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const timeLeft = electionDate - now;
+
+      if (timeLeft <= 0) {
+        document.querySelector('.countdown-container').innerHTML = 'The election has begun!';
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    };
+
+    function goBack() {
+      if (document.referrer.includes("index.html")) {
+        window.location.href = "index.html";
+      } else {
+        history.back();
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
